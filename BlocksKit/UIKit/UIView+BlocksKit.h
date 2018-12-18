@@ -49,7 +49,7 @@ NS_ASSUME_NONNULL_BEGIN
  @see whenDoubleTapped:
  @see whenTouches:tapped:handler:
  */
-- (void)bk_whenTapped:(void (^)(UIView *sender,UIGestureRecognizer *gesture))block NS_SWIFT_NAME(whenTapped(handler:));
+- (void)bk_whenTapped:(void (^)(UIView  * _Nullable sender,UIGestureRecognizer *gesture))block NS_SWIFT_NAME(whenTapped(handler:));
 
 /** Adds a recognizer for one finger tapping twice.
  
@@ -61,7 +61,7 @@ NS_ASSUME_NONNULL_BEGIN
  @see whenTapped:
  @see whenTouches:tapped:handler:
  */
-- (void)bk_whenDoubleTapped:(void (^)(UIView *sender,UIGestureRecognizer *gesture))block NS_SWIFT_NAME(whenDoubleTapped(handler:));
+- (void)bk_whenDoubleTapped:(void (^)(UIView  * _Nullable sender,UIGestureRecognizer *gesture))block NS_SWIFT_NAME(whenDoubleTapped(handler:));
 
 /** A convenience wrapper that non-recursively loops through the subviews of a view.
  

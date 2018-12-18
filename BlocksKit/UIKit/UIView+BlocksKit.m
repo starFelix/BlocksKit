@@ -8,7 +8,7 @@
 
 @implementation UIView (BlocksKit)
 
-- (void)bk_whenTouches:(NSUInteger)numberOfTouches tapped:(NSUInteger)numberOfTaps handler:(void (^)(UIView *sender,UIGestureRecognizer *gesture))block
+- (void)bk_whenTouches:(NSUInteger)numberOfTouches tapped:(NSUInteger)numberOfTaps handler:(void (^)(UIView  * _Nullable sender,UIGestureRecognizer *gesture))block
 {
 	if (!block) return;
 	
@@ -34,12 +34,12 @@
 	[self addGestureRecognizer:gesture];
 }
 
-- (void)bk_whenTapped:(void (^)(UIView *sender,UIGestureRecognizer *gesture))block
+- (void)bk_whenTapped:(void (^)(UIView  * _Nullable sender,UIGestureRecognizer *gesture))block
 {
 	[self bk_whenTouches:1 tapped:1 handler:block];
 }
 
-- (void)bk_whenDoubleTapped:(void (^)(UIView *sender,UIGestureRecognizer *gesture))block
+- (void)bk_whenDoubleTapped:(void (^)(UIView  * _Nullable sender,UIGestureRecognizer *gesture))block
 {
 	[self bk_whenTouches:1 tapped:2 handler:block];
 }
