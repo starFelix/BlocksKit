@@ -37,7 +37,7 @@ NS_ASSUME_NONNULL_BEGIN
  @see whenTapped:
  @see whenDoubleTapped:
  */
-- (void)bk_whenTouches:(NSUInteger)numberOfTouches tapped:(NSUInteger)numberOfTaps handler:(void (^)(void))block;
+- (void)bk_whenTouches:(NSUInteger)numberOfTouches tapped:(NSUInteger)numberOfTaps handler:(void (^)(UIView  * _Nullable sender,UIGestureRecognizer *gesture))block NS_SWIFT_NAME(whenTouches(touches:taps:handler:));
 
 /** Adds a recognizer for one finger tapping once.
  
@@ -49,7 +49,7 @@ NS_ASSUME_NONNULL_BEGIN
  @see whenDoubleTapped:
  @see whenTouches:tapped:handler:
  */
-- (void)bk_whenTapped:(void (^)(void))block;
+- (void)bk_whenTapped:(void (^)(UIView *sender,UIGestureRecognizer *gesture))block NS_SWIFT_NAME(whenTapped(handler:));
 
 /** Adds a recognizer for one finger tapping twice.
  
@@ -61,13 +61,13 @@ NS_ASSUME_NONNULL_BEGIN
  @see whenTapped:
  @see whenTouches:tapped:handler:
  */
-- (void)bk_whenDoubleTapped:(void (^)(void))block;
+- (void)bk_whenDoubleTapped:(void (^)(UIView *sender,UIGestureRecognizer *gesture))block NS_SWIFT_NAME(whenDoubleTapped(handler:));
 
 /** A convenience wrapper that non-recursively loops through the subviews of a view.
  
  @param block A code block that interacts with a UIView sender.
  */
-- (void)bk_eachSubview:(void (^)(UIView *subview))block;
+- (void)bk_eachSubview:(void (^)(UIView *subview))block NS_SWIFT_NAME(eachSubview(handler:));
 
 @end
 

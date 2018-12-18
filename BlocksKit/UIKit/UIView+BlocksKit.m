@@ -8,12 +8,13 @@
 
 @implementation UIView (BlocksKit)
 
-- (void)bk_whenTouches:(NSUInteger)numberOfTouches tapped:(NSUInteger)numberOfTaps handler:(void (^)(void))block
+- (void)bk_whenTouches:(NSUInteger)numberOfTouches tapped:(NSUInteger)numberOfTaps handler:(void (^)(UIView *sender,UIGestureRecognizer *gesture))block
 {
 	if (!block) return;
 	
+    __weak UIView *weakSelf = self;
 	UITapGestureRecognizer *gesture = [UITapGestureRecognizer bk_recognizerWithHandler:^(UIGestureRecognizer *sender, UIGestureRecognizerState state, CGPoint location) {
-		if (state == UIGestureRecognizerStateRecognized) block();
+		block(self,sender);
 	}];
 	
 	gesture.numberOfTouchesRequired = numberOfTouches;
@@ -33,12 +34,12 @@
 	[self addGestureRecognizer:gesture];
 }
 
-- (void)bk_whenTapped:(void (^)(void))block
+- (void)bk_whenTapped:(void (^)(UIView *sender,UIGestureRecognizer *gesture))block
 {
 	[self bk_whenTouches:1 tapped:1 handler:block];
 }
 
-- (void)bk_whenDoubleTapped:(void (^)(void))block
+- (void)bk_whenDoubleTapped:(void (^)(UIView *sender,UIGestureRecognizer *gesture))block
 {
 	[self bk_whenTouches:1 tapped:2 handler:block];
 }
